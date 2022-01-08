@@ -1,0 +1,65 @@
+.app {
+  background: linear-gradient(to right bottom, #36d1dc, #5b86e5);
+  height: 100vh;
+  padding: 2rem;
+}
+
+.phrase-row {
+  display: grid;
+  margin: 1rem;
+  margin-bottom: 3rem;
+}
+
+.phrase {
+  justify-self: center;
+}
+
+.details-container {
+  display: flex;
+  vertical-align: middle;
+  align-items: center;
+}
+
+.detail-icon {
+  display: inline-flex;
+  /*display: inline-block;
+  vertical-align: middle; */
+}
+
+/* .detail-icon {
+  display: inline;
+  align-items: center;
+} */
+
+.detail-text {
+  display: inline-flex;
+  align-items: middle;
+  margin-left: 1rem;
+}
+
+.detail-description {
+  margin-bottom: 1rem;
+}
+/* @media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+} */
+
+/* @media screen and (max-width: 480px) {
+
+} */
+
+/* img {
+  max-width: 100%;
+  display: block;
+} */
+
+/* @keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+} */
