@@ -1,9 +1,10 @@
 import { Box, Text } from '@chakra-ui/react'
+import Welcome from '../components/homeSections/Welcome'
 
 function HomePage() {
   return (
   <Box > 
-    <Text>Welcome to Tropic Pool!</Text>
+    <Welcome />
   </Box>
   )
 }
