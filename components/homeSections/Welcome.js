@@ -1,4 +1,5 @@
 import { Container, Img, Text } from "@chakra-ui/react";
+import PoolToolWidget from "./PoolToolWidget";
 
 const Welcome = () => {
 
@@ -8,6 +9,7 @@ const Welcome = () => {
       <Text fontSize="3xl" p={4}>
         Your vacation destination for staking Cardano
       </Text>
+      <PoolToolWidget />
     </Container>
   );
 };
