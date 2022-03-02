@@ -22,7 +22,12 @@ const PoolToolWidget = () => {
 
       const networkQuery = fetch("https://pooltool.s3-us-west-2.amazonaws.com/stats/stats.json?now=" + start)
 
-      const poolQuery = fetch("https://pooltool.s3-us-west-2.amazonaws.com/8e4d2a3/pools/" + poolId + "/livestats.json?now=" + start)
+      //const poolQuery = fetch("https://pooltool.s3-us-west-2.amazonaws.com/8e4d2a3/pools/" + poolId + "/livestats.json?now=" + start)
+      const options = {
+        headers: { "project_id": "mainnetOmftm61gxeazeDXzpnkCw1tHnC5nQDdE" }
+      };
+
+      const poolQuery = fetch("https://cardano-mainnet.blockfrost.io/api/v0/pools/7447913be564ff4e2505fb21ca5de980517f3b1575e006ce2d754b74", options);
 
       let networkResponse = await networkQuery;
       let poolResponse = await poolQuery;
@@ -34,9 +39,9 @@ const PoolToolWidget = () => {
       setEpoch(parseInt(networkResponseBody['currentepoch']));
       setHeight(networkResponseBody['majoritymax'])
       setSlot(networkResponseBody['currentslot'])
-      setEpochBlocks(poolResponseBody['epochblocks']);
-      setLifetimeBlocks(poolResponseBody['lifetimeblocks']);
-      setLiveStake((poolResponseBody['livestake'] / 1000000));
+      setEpochBlocks(poolResponseBody['blocks_epoch']);
+      setLifetimeBlocks(poolResponseBody['blocks_minted']);
+      setLiveStake((poolResponseBody['active_stake'] / 1000000));
     };
 
     loadData();
