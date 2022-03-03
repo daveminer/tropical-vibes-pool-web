@@ -1,7 +1,6 @@
 import { Flex } from '@chakra-ui/react';
-import Navbar from './Navbar';
 
-const Layout = ({children}) => {
+const Layout = ({ children }) => {
   return (
     <div className="content">
       <Flex
@@ -9,7 +8,6 @@ const Layout = ({children}) => {
         align="center"
         m="0 auto"
       >
-        <Navbar/>
         {children}
       </Flex>
     </div>
