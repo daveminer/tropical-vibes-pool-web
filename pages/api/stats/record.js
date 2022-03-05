@@ -1,13 +1,6 @@
 import db from '../../../db.js'
 
 export default async function handler(req, res) {
-
-  console.log(req.headers.host, "REQQQ")
-  // Can only be called from the same server; hide it otherwise
-  if (!req.headers.host.startsWith("localhost")) {
-    return res.status(404);
-  }
-
   const response = await fetch(process.env.DELEGATOR_QUERY_URL, {
     headers: {
       'project_id': process.env.BLOCKFROST_PROJECT_ID
