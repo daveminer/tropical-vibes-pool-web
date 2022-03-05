@@ -16,13 +16,13 @@ export default async function handler(req, res) {
 
   const body = await response.json();
 
-  const insertStatement = body.map(deleg => {
-    return {
+  const insertStatement = body.map(deleg => (
+    {
       live_stake: BigInt(deleg.live_stake),
       stake_address: deleg.address,
       date_credited: new Date().toISOString().slice(0, 10)
     }
-  });
+  ));
 
   let insertResult = await db()('daily_delegations').insert(insertStatement);
 
