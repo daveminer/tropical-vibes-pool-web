@@ -2,23 +2,19 @@ import db from '../../../db.js'
 
 export default async function handler(req, res) {
 
+  console.log(req.headers.host, "REQQQ")
   // Can only be called from the same server; hide it otherwise
-  if (location.hostname !== "localhost" && location.hostname !== "127.0.0.1") {
+  if (!req.headers.host.startsWith("localhost")) {
     return res.status(404);
   }
 
-  /*   const response = await fetch(process.env.DELEGATOR_QUERY_URL, {
-      headers: {
-        'project_id': process.env.BLOCKFROST_PROJECT_ID
-      },
-    });
-  
-    const body = await response.json();
-    console.log(body, "BODY"); */
+  const response = await fetch(process.env.DELEGATOR_QUERY_URL, {
+    headers: {
+      'project_id': process.env.BLOCKFROST_PROJECT_ID
+    },
+  });
 
-  console.log(req, "REQ");
-
-  let body = JSON.parse("[{\"address\": \"stake1u8jgfjh8lhjwq75lv62pnt3p3l4u82ypgr73aqk7ygj4f0sx4hyrf\",\"live_stake\": \"2521774962\"}]");
+  const body = await response.json();
 
   const insertStatement = body.map(deleg => {
     return {
@@ -28,9 +24,16 @@ export default async function handler(req, res) {
     }
   });
 
-  //let insertResult = await db()('daily_delegations').insert(insertStatement);
+  let insertResult = await db()('daily_delegations').insert(insertStatement);
 
-  res.status(200).json({
-    result: "ok"
-  });
+  if (insertResult.command === 'INSERT' && insertResult.rowCount >= 0) {
+    res.status(200).json({
+      result: "ok"
+    });
+  } else {
+    res.status(500).json({
+      result: "error",
+      reason: insertResult.toString()
+    });
+  }
 }
