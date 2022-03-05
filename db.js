@@ -10,7 +10,6 @@ export default function db() {
     );
   }
 
-  console.log("New Connection");
   const db = knex(configByEnvironment);
 
   return db;
