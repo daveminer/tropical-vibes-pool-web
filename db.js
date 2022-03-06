@@ -1,8 +1,8 @@
-const dbConfig = require("./knexfile.js");
-const knex = require("knex");
+const dbConfig = require('./knexfile.js');
+const knex = require('knex');
 
 export default function db() {
-  const configByEnvironment = dbConfig[process.env.NODE_ENV || "development"];
+  const configByEnvironment = dbConfig[process.env.NODE_ENV || 'development'];
 
   if (!configByEnvironment) {
     throw new Error(
