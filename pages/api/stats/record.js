@@ -6,25 +6,27 @@ const STAKE_POOL_ID = '7447913be564ff4e2505fb21ca5de980517f3b1575e006ce2d754b74'
 
 export default async function handler(req, res) {
   try {
-    const apiEpochResponse = await apiEpoch();
+    const apiEpochResponse = await latestApiEpoch();
 
     if (apiEpochResponse.error) {
-      return internalServerError(apiEpochResponse)
+      return internalServerError(apiEpochResponse, res)
     }
+    const { epoch: apiEpoch } = apiEpochResponse;
 
     const lastRecordedEpoch = await fetchLastRecordedEpoch();
-    if (lastRecordedEpoch >= apiEpochResponse.epoch) {
-      return okResponse(`epoch ${lastRecordedEpoch} data already saved.`);
+    if (lastRecordedEpoch >= apiEpoch) {
+      return okResponse(`epoch ${lastRecordedEpoch} data already saved.`, res);
     }
 
-    const saveDelegationResponse = await saveDelegations(latestApiEpoch.epoch);
+    const saveDelegationResponse = await saveDelegations(apiEpoch);
     if (saveDelegationResponse.error) {
-      return internalServerError(saveDelegationResponse)
+      return internalServerError(saveDelegationResponse, res)
     }
 
-    return okResponse(`epoch ${lastRecordedEpoch} written.`);
+    return okResponse(`epoch ${apiEpoch} written.`, res);
   } catch (e) {
     console.log(`Error while writing delegation records: ${e.toString()}`);
+    return internalServerError(e, res);
   }
 }
 
@@ -38,11 +40,12 @@ const fetchDelegations = (epoch) =>
 // Get the last epoch saved in the database
 const fetchLastRecordedEpoch = async () => {
   const result = await db()('delegation_snapshots').max('epoch');
+  console.log(result)
   return result[0].max;
 };
 
 // Latest epoch according to the API
-const apiEpoch = async () => {
+const latestApiEpoch = async () => {
   const epochResult = await fetchEpoch();
   const epochInfo = await epochResult.json();
 
@@ -72,40 +75,48 @@ const saveDelegations = async (epoch) => {
     }
   }
 
-  const insertStatement = delegationInfo.map(deleg => (
-    {
-      live_stake: BigInt(deleg.amount),
-      stake_address: deleg.stake_address
-    }
-  ));
+  const txResult = await db().transaction(async trx => {
+    await trx('delegation_snapshots').insert({ epoch: epoch });
 
-  let insertResult = await db()('delegations').insert(insertStatement);
+    let [snapshotId, ...rest] =
+      await trx('delegation_snapshots').where({ epoch: epoch }).pluck('id');
 
-  if (insertResult.command === 'INSERT' && insertResult.rowCount >= 0) {
+    const insertStatement = delegationInfo.map(deleg => (
+      {
+        live_stake: BigInt(deleg.amount),
+        snapshot_id: snapshotId,
+        stake_address: deleg.stake_address
+      }
+    ));
+
+    return await trx('delegations').insert(insertStatement);
+  });
+
+  if (txResult.command === 'INSERT' && txResult.rowCount >= 0) {
     return {
       ok: true,
-      rowsUpdated: rowCount
+      rowCount: txResult.rowCount
     }
   } else {
     return {
       error: 'Error while inserting delegations',
-      reason: insertResult.toString()
+      reason: txResult.toString()
     }
   }
 }
 
 // HTTP response helpers
 
-const okResponse = (message) => {
+const okResponse = (message, res) => {
   return res.status(200).json({
     result: 'ok',
     reason: message
   });
 }
 
-const internalServerError = (response) => {
+const internalServerError = (errorObj, res) => {
   return res.status(500).json({
-    error: response.error,
-    reason: response.reason
+    error: errorObj.error,
+    reason: errorObj.reason
   });
 }

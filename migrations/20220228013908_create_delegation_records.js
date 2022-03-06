@@ -10,7 +10,7 @@ exports.up = async (knex) => {
   // Holds a snapshot run per epoch
   await knex.schema.createTable('delegation_snapshots', function (table) {
     table.uuid('id')
-      .primary('delegation_snapshot_id_primary_key', { constraintName: 'delegaton_snapshot_primary_key' })
+      .primary('delegation_snapshot_id_primary_key', { constraintName: 'delegation_snapshots_primary_key' })
       .defaultTo(knex.raw('uuid_generate_v4()'));
 
     table.integer('epoch').notNullable();
@@ -21,7 +21,7 @@ exports.up = async (knex) => {
   // Record each wallet's delegation per epoch
   return await knex.schema.createTable('delegations', function (table) {
     table.uuid('id')
-      .primary('delegations_id_primary_key', { constraintName: 'delegators_primary_key' })
+      .primary('delegations_id_primary_key', { constraintName: 'delegations_primary_key' })
       .defaultTo(knex.raw('uuid_generate_v4()'));
 
     table.uuid('snapshot_id').references('delegation_snapshots.id');
