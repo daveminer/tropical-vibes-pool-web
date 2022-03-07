@@ -25,6 +25,7 @@ export default async function handler(req, res) {
 
     return okResponse(`epoch ${apiEpoch} written.`, res);
   } catch (e) {
+    // TODO: turn into logging of some sort
     console.log(`Error while writing delegation records: ${e.toString()}`);
     return internalServerError(e, res);
   }
@@ -40,7 +41,6 @@ const fetchDelegations = (epoch) =>
 // Get the last epoch saved in the database
 const fetchLastRecordedEpoch = async () => {
   const result = await db()('delegation_snapshots').max('epoch');
-  console.log(result)
   return result[0].max;
 };
 
