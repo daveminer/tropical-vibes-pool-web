@@ -1,18 +1,19 @@
-import { Flex } from '@chakra-ui/react';
+import { Box, Flex} from '@chakra-ui/react';
 import Footer from './Footer';
 
 const Layout = ({ children }) => {
   return (
-    <div className="content">
       <Flex
         direction="column"
         align="center"
         m="0 auto"
+        h="100vh"
       >
-        {children}
+        <Box style={{flex:"1 0 auto"}}>
+          {children}
+        </Box>
         <Footer />
       </Flex>
-    </div>
   )
 };
 

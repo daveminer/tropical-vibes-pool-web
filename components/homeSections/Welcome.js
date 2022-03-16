@@ -1,16 +1,33 @@
-import { Container, Img, Text } from '@chakra-ui/react';
+import { Flex, Img, Text } from '@chakra-ui/react';
 import PoolToolWidget from './PoolToolWidget';
 
 const Welcome = () => {
 
   return (
-    <Container style={{ textAlign: 'center' }}>
-      <Img src='/logo.png' style={{ marginTop: '2rem', marginLeft: 'auto', marginRight: 'auto' }} />
-      <Img src='./palm-tree.png' height='30%' width='30%' style={{ marginLeft: 'auto', marginRight: 'auto', marginTop: '5rem' }} />
-      <Text fontSize='3xl' style={{ marginTop: '5rem', textAlign: 'center' }}>
+    <Flex 
+      align="center" 
+      direction="column"
+    >
+      <Img 
+        src='/logo.png'
+        mx="auto"
+        mt="2rem"
+      />
+      <Img 
+        src='./palm-tree.png' 
+        height={['25%', '25%', '25%', '20%']}
+        width={['25%', '25%', '25%', '20%']} 
+        mx="auto"
+        mt="4rem"
+      />
+      <Text 
+        fontSize='3xl' 
+        mt="5rem"
+        align="center"
+      >
         Coming soon!
       </Text>
-    </Container>
+    </Flex>
   );
 };
 

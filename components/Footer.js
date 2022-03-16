@@ -3,30 +3,61 @@ import {
   Container,
   Stack,
   Link,
-  useColorModeValue,
+  IconButton,
 } from '@chakra-ui/react';
+
+import { AiOutlineTwitter, AiOutlineMedium, AiOutlineMail } from 'react-icons/ai';
+
+import { FaDiscord, FaTelegramPlane } from 'react-icons/fa'
+
+const socialLinksAndIcons = [
+  {
+    link: 'https://twitter.com/TropicPoolADA',
+    IconComponent: AiOutlineTwitter
+  },
+  {
+    link: 'https://medium.com/@TropicPoolADA',
+    IconComponent: AiOutlineMedium
+  },
+  {
+    link: 'https://discord.gg/S7NNxR2b53',
+    IconComponent: FaDiscord
+  },
+  {
+    link: 'http://t.me/tropicpoolada',
+    IconComponent: FaTelegramPlane
+  },
+  {
+    link: 'mailto: info@tropicpool.io',
+    IconComponent: AiOutlineMail
+  },
+]
 
 const Footer = () => {
   return (
-    <Box
-      bg={useColorModeValue('gray.50', 'gray.900')}
-      color={useColorModeValue('gray.700', 'gray.200')}>
+    <Box style={{flexShrink: 0}}>
       <Container
         as={Stack}
-        maxW={'6xl'}
         pt={12}
         pb={4}
         direction={{ base: 'column', md: 'row' }}
-        spacing={4}
+        spacing={2}
         justify={{ base: 'center', md: 'space-between' }}
         align={{ base: 'center', md: 'center' }}>
         <Stack direction={'row'} spacing={6}>
-          <Link href={'#'}>Home</Link>
-          <Link href={'https://twitter.com/TropicPoolADA'} isExternal>Twitter</Link>
-          <Link href={'https://medium.com/@TropicPoolADA'} isExternal>Blog</Link>
-          <Link href={'https://discord.gg/S7NNxR2b53'} isExternal>Discord</Link>
-          <Link href={'http://t.me/tropicpoolada'} isExternal>Telegram</Link>
-          <Link href={'mailto: info@tropicpool.io'} isExternal>Email Us</Link>
+          {socialLinksAndIcons.map(({link, IconComponent}) => {
+            return (
+              <Link href={link} isExternal key={link}>
+                <IconButton 
+                  icon={<IconComponent />} 
+                  bg="white" 
+                  // size='lg'
+                  fontSize={["20px", "25px"]}
+                />
+              </Link>
+              )
+            })
+          }
         </Stack>
       </Container>
     </Box>
