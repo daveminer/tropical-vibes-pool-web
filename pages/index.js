@@ -1,9 +1,7 @@
-import Welcome from '../components/homeSections/Welcome'
+import Welcome from "../components/homeSections/Welcome.tsx";
 
 function HomePage() {
-  return (
-    <Welcome />
-  )
+  return <Welcome />;
 }
 
-export default HomePage
+export default HomePage;
