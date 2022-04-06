@@ -1,3 +1,31 @@
+.delegateNow {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+
+  position: static;
+  width: 607px;
+  height: 175px;
+  left: 0px;
+  top: 0px;
+
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 78px 0px;
+}
+
+.navbar {
+  width: 100%;
+  height: 98px;
+
+  background: rgba(7, 11, 40, 0.1);
+}
+
 .landing {
   width: 100%;
   height: 825px;
@@ -21,4 +49,28 @@
   top: 0px;
   left: 14px;
   overflow: hidden;
+}
+
+.titleBox {
+  position: absolute;
+
+  left: 150px;
+  top: 262px;
+}
+
+.titleText {
+  font-family: 'Montserrat';
+  font-size: 24px;
+  color: #FFFFFF;
+
+  width: 404px;
+  margin: 20px 0px;
+}
+
+.titleTextHeader {
+  font-family: 'Montserrat';
+  font-weight: 800;
+  font-size: 55px;
+
+  color: #FFFFFF;
 }
