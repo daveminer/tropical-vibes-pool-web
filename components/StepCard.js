@@ -31,7 +31,7 @@ const StepCard = ({ idx }) => {
             borderRadius="25px"
             marginRight="1rem"
           >
-            {idx}
+            {idx + 1}
           </Button>
           <Text>{`${stepContents[idx].title} Step`}</Text>
         </HStack>
