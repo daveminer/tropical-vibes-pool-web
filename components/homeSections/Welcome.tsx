@@ -1,5 +1,5 @@
-import { ReactNode } from 'react';
-import { Box, Button, Flex, Grid, GridItem, HStack, Image, Link, SimpleGrid, Spacer, Text, useColorModeValue } from "@chakra-ui/react";
+
+import { Box, Button, Flex, Grid, GridItem, HStack, Image, SimpleGrid, Spacer, Text } from "@chakra-ui/react";
 // import PoolToolWidget from "./PoolToolWidget";
 import ActionButton from '../ActionButton';
 import BenefitList from '../BenefitList';
@@ -7,6 +7,7 @@ import BlogCard from '../BlogCard';
 import FaqQa from '../FaqQa';
 import Footer from '../Footer';
 import StepCard from '../StepCard';
+import TopBar from '../TopBar';
 
 const blogs = [
   {
@@ -22,23 +23,8 @@ const blogs = [
     content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Egestas tortor malesuada vel sed aenean facilisis. In turpis risus phasellus lorem. Diam nisl id tristique sit tristique duis. A vel velit'
   }
 ];
-const links = ['Home', 'About', 'Blog', 'FAQ'];
-const stakingSteps = ['one', 'two', 'three'];
 
-const NavLink = ({ children }: { children: ReactNode }) => (
-  <Link
-    textColor={'white'}
-    px={2}
-    py={1}
-    rounded={'md'}
-    _hover={{
-      textDecoration: 'none',
-      bg: useColorModeValue('gray.200', 'gray.700'),
-    }}
-    href={'#'}>
-    {children}
-  </Link>
-);
+const stakingSteps = ['one', 'two', 'three'];
 
 const Welcome = () => {
   return (
@@ -47,39 +33,7 @@ const Welcome = () => {
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
       <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&display=swap" rel="stylesheet" />
       <Box>
-        <Box>
-          <Flex padding='2rem' position={'absolute'} w='full'>
-            <HStack>
-              <Box
-                boxSize='48px'
-                marginRight='1rem'
-                minHeight='48px'
-                minWidth='48px'>
-                <Image src='dot-logo.png' alt='dot-logo' />
-              </Box>
-              <Text
-                color='white'
-                fontFamily='Montserrat'
-                fontSize='32px'
-                fontStyle='italic'
-              >
-                Tropical Vibes Stake Pool
-              </Text>
-            </HStack>
-            <Spacer />
-            <Box>
-              <HStack
-                as={'nav'}
-                spacing={4}
-                display={{ base: 'none', md: 'flex' }}>
-                {links.map((link) => (
-                  <NavLink key={link} children={{}}>{link}</NavLink>
-                ))}
-                <ActionButton content='Start Staking' />
-              </HStack>
-            </Box>
-          </Flex>
-        </Box>
+        <TopBar />
         <Box
           width='100%'
           height='825px'
