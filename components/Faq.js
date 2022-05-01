@@ -41,7 +41,7 @@ const Faq = () => {
         FAQ
       </Flex>
       <Grid
-        column={2}
+        column={{ base: 1, md: 2 }}
         gap={68}
         marginLeft="4rem"
         marginRight="4rem"
@@ -51,8 +51,8 @@ const Faq = () => {
           <GridItem
             backgroundColor="#111535"
             borderRadius={"20px"}
-            colEnd={(idx % 2) + 1}
-            colStart={(idx % 2) + 1}
+            colEnd={{ base: 1, md: (idx % 2) + 1 }}
+            colStart={{ base: 1, md: (idx % 2) + 1 }}
             key={`faq-${idx}`}
             display="inline-flex"
           >
