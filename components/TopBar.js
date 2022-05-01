@@ -10,9 +10,12 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 
-const links = ["Home", "About", "Blog", "FAQ"];
+const links = [
+  { name: "About", href: "about" },
+  { name: "FAQ", href: "faq" },
+];
 
-const NavLink = ({ children }) => (
+const NavLink = ({ children, href }) => (
   <Link
     textColor={"white"}
     px={2}
@@ -22,7 +25,7 @@ const NavLink = ({ children }) => (
       textDecoration: "none",
       bg: useColorModeValue("gray.200", "gray.700"),
     }}
-    href={"#"}
+    href={href}
   >
     {children}
   </Link>
@@ -48,11 +51,14 @@ const TopBar = () => (
       <Box>
         <HStack as={"nav"} spacing={4} display={{ base: "none", md: "flex" }}>
           {links.map((link) => (
-            <NavLink key={link} children={{}}>
-              {link}
+            <NavLink key={link.name} href={`#${link.href}`}>
+              {link.name}
             </NavLink>
           ))}
-          <ActionButton content="Start Staking" />
+          <ActionButton
+            content="Get Started"
+            onClick="window.location.href='#about'"
+          ></ActionButton>
         </HStack>
       </Box>
     </Flex>

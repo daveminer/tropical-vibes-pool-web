@@ -2,21 +2,23 @@ import { Box, Button, Flex, HStack, Text } from "@chakra-ui/react";
 
 const stepContents = [
   {
-    title: "First",
-    content: "Lorem Ipsum",
+    title: "Create a free wallet",
+    content:
+      "Head to https://yoroi-wallet.com/ and install the wallet for your browser. Once installed, open the Yoroi browser extension and follow the instructions to create your wallet.",
   },
   {
-    title: "Second",
-    content: "Lorem Ipsum",
+    title: "Get ADA",
+    content:
+      "You will need to send ADA to your new wallet. The easiest way to get some is to purchase from a centralized exchange such as https://binance.com, https://coinbase.com, or https://kraken.com.",
   },
   {
-    title: "Third",
-    content: "Lorem Ipsum",
+    title: "Stake ADA on Tropical Vibes",
+    content:
+      'Open your Yoroi wallet and click on "Delegation List". In the "Search By Id or Name" box, type the pool ticker TROPC. Click on "Delegate" to enter how much ADA you want to stake and you\'re done! Rewards accrue automatically.',
   },
 ];
 
 const StepCard = ({ idx }) => {
-  console.log(idx);
   return (
     <Flex marginLeft="2rem" marginRight="2rem">
       <Box>
@@ -33,7 +35,7 @@ const StepCard = ({ idx }) => {
           >
             {idx + 1}
           </Button>
-          <Text>{`${stepContents[idx].title} Step`}</Text>
+          <Text>{stepContents[idx].title}</Text>
         </HStack>
         <Box
           color="white"
@@ -42,11 +44,7 @@ const StepCard = ({ idx }) => {
           marginLeft="1.2rem"
           marginRight="1.2rem"
         >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Egestas
-          tortor malesuada vel sed aenean facilisis. In turpis risus phasellus
-          lorem. Diam nisl id tristique sit tristique duis. A vel velit habitant
-          lectus ornare non sem purus. A vel velit habitant lectus ornare non
-          sem purus.
+          {stepContents[idx].content}
         </Box>
       </Box>
     </Flex>

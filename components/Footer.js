@@ -1,4 +1,11 @@
-import { Box, Container, Stack, Link, IconButton } from "@chakra-ui/react";
+import {
+  Box,
+  Container,
+  Flex,
+  IconButton,
+  Link,
+  Stack,
+} from "@chakra-ui/react";
 
 import {
   AiOutlineTwitter,
@@ -33,24 +40,29 @@ const socialLinksAndIcons = [
 
 const Footer = () => {
   return (
-    <Box>
-      <Container spacing={2} justify={{ md: "space-between" }}>
-        <Stack direction={"row"} spacing={6}>
-          {socialLinksAndIcons.map(({ link, IconComponent }) => {
-            return (
-              <Link href={link} isExternal key={link}>
-                <IconButton
-                  icon={<IconComponent />}
-                  bg="white"
-                  // size='lg'
-                  fontSize={["20px", "25px"]}
-                />
-              </Link>
-            );
-          })}
-        </Stack>
-      </Container>
-    </Box>
+    <Flex
+      flex={1}
+      alignContent="center"
+      backgroundColor="#010920"
+      justifyContent="center"
+      paddingBottom="2rem"
+    >
+      <Stack direction={"row"} spacing={6}>
+        {socialLinksAndIcons.map(({ link, IconComponent }) => {
+          return (
+            <Link href={link} isExternal key={link}>
+              <IconButton
+                icon={<IconComponent />}
+                bg="linear-gradient(125.41deg, #3D6BF5 -4.22%, #C53DF5 120.93%)"
+                color="white"
+                size="lg"
+                fontSize={["25px"]}
+              />
+            </Link>
+          );
+        })}
+      </Stack>
+    </Flex>
   );
 };
 

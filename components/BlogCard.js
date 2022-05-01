@@ -1,17 +1,8 @@
-import {
-  Box,
-  Button,
-  Flex,
-  Image,
-  Spacer,
-  Stack,
-  Text,
-} from "@chakra-ui/react";
+import { Box, Button, Flex, Image, Stack, Text } from "@chakra-ui/react";
 
 const BlogCard = ({ blog, idx }) => {
-  console.log(idx, "IDX");
   return (
-    <Stack fle>
+    <Stack>
       <Image marginBottom="2rem" src={`/test-blog-${idx + 1}.png`} />
       <Flex alignItems="center" paddingBottom="1rem">
         <Button
