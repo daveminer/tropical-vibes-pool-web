@@ -4,7 +4,6 @@ const BurstOne = () => {
   return (
     <Box position="absolute" top="0">
       <svg
-        width="720"
         height="720"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

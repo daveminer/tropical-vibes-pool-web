@@ -26,7 +26,6 @@ const BlogCard = ({ blog, idx }) => {
           marginRight="2rem"
           marginTop="3rem"
           maxHeight="10px"
-          width={"100%"}
         ></Button>
       </Flex>
     </Stack>

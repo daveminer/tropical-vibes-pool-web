@@ -53,6 +53,8 @@ const Faq = () => {
             borderRadius={"20px"}
             colEnd={(idx % 2) + 1}
             colStart={(idx % 2) + 1}
+            key={`faq-${idx}`}
+            display="inline-flex"
           >
             <FaqQa answer={topic.answer} question={topic.question} />
           </GridItem>
