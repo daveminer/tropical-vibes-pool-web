@@ -1,5 +1,5 @@
 import ActionButton from "./ActionButton";
-import { Box } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 
 import BurstOne from "./decorations/BurstOne";
 
@@ -12,19 +12,18 @@ const Banner = () => (
       backgroundSize="cover"
       opacity={1}
       zIndex={-2}
-    />
-    <BurstOne />
-    <Box left="150px" position="absolute" top="262px">
-      <div>
-        <Box
+    >
+      <BurstOne />
+      <Box paddingLeft={"7rem"} paddingTop={"14rem"}>
+        <Text
           color="#FFFFFF"
           fontFamily="Montserrat"
           fontSize="55px"
           fontWeight="800"
         >
           Invest in a balanced
-        </Box>
-        <Box
+        </Text>
+        <Text
           color="#FFFFFF"
           fontFamily="Montserrat"
           fontSize="24px"
@@ -32,12 +31,12 @@ const Banner = () => (
           width="404px"
         >
           Open and Sustainable Financial World with Cardano
-        </Box>
-      </div>
-      <div className="v2_26">
-        <div className=""></div>
-        <ActionButton content="Delegate Now" />
-      </div>
+        </Text>
+        <div className="v2_26">
+          <div className=""></div>
+          <ActionButton content="Delegate Now" />
+        </div>
+      </Box>
     </Box>
   </>
 );

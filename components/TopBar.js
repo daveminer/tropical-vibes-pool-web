@@ -1,4 +1,5 @@
 import ActionButton from "./ActionButton";
+import Banner from "../components/Banner";
 import {
   Box,
   Flex,
@@ -62,6 +63,7 @@ const TopBar = () => (
         </HStack>
       </Box>
     </Flex>
+    <Banner />
   </Box>
 );
 

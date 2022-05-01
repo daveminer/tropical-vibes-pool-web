@@ -1,7 +1,6 @@
 import { Box } from "@chakra-ui/react";
 // import PoolToolWidget from "./PoolToolWidget";
 
-import Banner from "../components/Banner";
 import Benefits from "../components/Benefits";
 //import Blog from '../Blog';
 import CallToAction from "../components/CallToAction";
@@ -24,7 +23,6 @@ function HomePage() {
         rel="stylesheet"
       />
       <TopBar />
-      <Banner />
       <HowItWorks />
       <Benefits />
       <Faq />
