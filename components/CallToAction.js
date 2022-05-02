@@ -15,7 +15,7 @@ const CallToAction = () => {
           fontSize={{ base: "20px", md: "40px" }}
           fontWeight="bold"
         >
-          Discover a new way to invest
+          Discover a new kind of passive income
         </Text>
         <Button backgroundColor="#010920" size="lg" textColor="white">
           <Link href="#about">Start Staking Now</Link>
