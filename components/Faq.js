@@ -15,7 +15,7 @@ const faqContent = [
       "Tropical Vibes pool has a 2% fee on rewards; all of the proceeds go to pool maintenance, pool infrastructure upgrades and Plutus App development to support the Cardano ecosystem. Besides this there is also a one-time network fee of 2 ADA to join the pool.",
   },
   {
-    question: "Are there any risks involved in staking with Tropcial Vibes",
+    question: "Are there any risks involved in staking with Tropcial Vibes?",
     answer:
       "No - your funds always remain safe in your wallet. Never send your ADA to anyone for any reason related to staking! We apply industry standards and work dilligently to continually improve the security posture of Tropical Vibes Stake Pool.",
   },

@@ -28,7 +28,7 @@ const Banner = () => (
           marginRight={{ base: "2rem", md: "0rem" }}
           textAlign={{ base: "center", md: "inherit" }}
         >
-          Invest in a balanced
+          Invest with ADA
         </Text>
         <Text
           color="#FFFFFF"
@@ -37,7 +37,7 @@ const Banner = () => (
           margin="20px 0px"
           textAlign={{ base: "center", md: "inherit" }}
         >
-          Open and Sustainable Financial World with Cardano
+          For a Balanced, Open and Sustainable Future
         </Text>
         <Box
           display="flex"
