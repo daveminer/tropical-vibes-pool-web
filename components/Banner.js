@@ -14,28 +14,39 @@ const Banner = () => (
       zIndex={-2}
     >
       <BurstOne />
-      <Box paddingLeft={"7rem"} paddingTop={"14rem"}>
+      <Box
+        paddingLeft={{ base: 0, md: "7rem" }}
+        paddingTop={{ base: "14rem", md: "14rem" }}
+        justifyContent={{ base: "center", md: "inherit" }}
+      >
         <Text
           color="#FFFFFF"
           fontFamily="Montserrat"
-          fontSize="55px"
+          fontSize={{ base: "32px", md: "55px" }}
           fontWeight="800"
+          marginLeft={{ base: "2rem", md: "0rem" }}
+          marginRight={{ base: "2rem", md: "0rem" }}
+          textAlign={{ base: "center", md: "inherit" }}
         >
           Invest in a balanced
         </Text>
         <Text
           color="#FFFFFF"
           fontFamily="Montserrat"
-          fontSize="24px"
+          fontSize={{ base: "20px", md: "24px" }}
           margin="20px 0px"
-          width="404px"
+          textAlign={{ base: "center", md: "inherit" }}
         >
           Open and Sustainable Financial World with Cardano
         </Text>
-        <div className="v2_26">
-          <div className=""></div>
+        <Box
+          display="flex"
+          justifyContent={{ base: "center", md: "inherit" }}
+          marginTop="4rem"
+          marginLeft={{ base: "0rem", md: "2rem" }}
+        >
           <ActionButton content="Delegate Now" />
-        </div>
+        </Box>
       </Box>
     </Box>
   </>

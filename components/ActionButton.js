@@ -10,7 +10,7 @@ const ActionButton = ({ content, onclick }) => {
       onClick={onclick}
       size="lg"
     >
-      <Link href="#about">Get Started</Link>
+      <Link href="#about">{content}</Link>
     </Button>
   );
 };
