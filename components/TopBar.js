@@ -7,7 +7,6 @@ import {
   Image,
   Link,
   Spacer,
-  Stack,
   Text,
   useColorModeValue,
 } from "@chakra-ui/react";
@@ -35,7 +34,7 @@ const NavLink = ({ children, href }) => (
 
 const TopBar = () => (
   <Box>
-    <Flex padding="2rem" position={"absolute"} w="full">
+    <Flex padding={{ base: "1rem", md: "2rem" }} position={"absolute"} w="full">
       <HStack justifyContent={{ base: "center", md: "inherit" }}>
         <Box
           boxSize="48px"
