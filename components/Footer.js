@@ -47,7 +47,7 @@ const Footer = () => {
       justifyContent="center"
       paddingBottom="2rem"
     >
-      <Stack direction={"row"} spacing={6}>
+      <Stack direction={"row"} spacing={{ base: 3, md: 6 }}>
         {socialLinksAndIcons.map(({ link, IconComponent }) => {
           return (
             <Link href={link} isExternal key={link}>

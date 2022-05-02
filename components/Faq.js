@@ -43,6 +43,7 @@ const Faq = () => {
       <Grid
         column={{ base: 1, md: 2 }}
         gap={68}
+        justifyContent={{ base: "center", md: "inherit" }}
         marginLeft="4rem"
         marginRight="4rem"
         paddingBottom="4rem"
